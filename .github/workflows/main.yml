@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Compile and run C program
+      run: |
+        gcc -o Hello_World Hello_World.c  # Replace 'my_program.c' with the name of your C source file
+        ./Hello_World
