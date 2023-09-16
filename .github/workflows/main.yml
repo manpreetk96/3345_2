@@ -12,7 +12,7 @@
 
       - name: Build
         id: build
-        uses: cloudposse/github-action-docker-build-push@main
+        uses: cloudposse/github-action-docker-build-push@1.13.1
         with:
           registry: registry.hub.docker.com
           organization: "mkaur0896"
