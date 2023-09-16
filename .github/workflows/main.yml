@@ -1,21 +1,26 @@
-name: C/C++ CI
+  name: Push into main branch
+  on:
+    push:
+      branches: [ master ]
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  jobs:
+    context:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-jobs:
-  build:
+      - name: Build
+        id: build
+        uses: cloudposse/github-action-docker-build-push@main
+        with:
+          registry: registry.hub.docker.com
+          organization: "mkaur0896"
+          repository: "3345"
+          login: "${{ secrets.DOCKERHUB_USERNAME }}"
+          password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+          platforms: linux/amd64,linux/arm64
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Compile and run C program
-      run: |
-        gcc -o Hello_World Hello_World.c  # Replace 'my_program.c' with the name of your C source file
-        ./Hello_World
+      outputs:
+        image: ${{ steps.build.outputs.image }}
+        tag: ${{ steps.build.outputs.tag }}
