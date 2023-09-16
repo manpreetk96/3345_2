@@ -1,4 +1,4 @@
-FROM python:3.9-slim-buster
+FROM gcc:latest
 
 # Set the working directory to /appjj
 WORKDIR /app
@@ -6,14 +6,8 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
-
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV NAME World
+#Compile C program
+RUN gcc -o Hello_World Hello_World.c
 
 # Run app.py when the container launches
-CMD ["python3", "hello-world.py"]
+CMD ["./Hello_World"]
