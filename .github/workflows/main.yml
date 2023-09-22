@@ -20,7 +20,8 @@
         run: echo $MY_WORKFLOW_VARIABLE
       - name: Print Job variable
         run: echo $MY_JOB_VARIABLE
-      
+      - name: Print Step variable
+        run: echo $MY_STEP_VARIABLE
       - name: Build
         id: build
         uses: cloudposse/github-action-docker-build-push@1.13.1
@@ -37,8 +38,3 @@
         tag: ${{ steps.build.outputs.tag }}
     deploy:
       runs-on: ubuntu-latest
-  
-      steps:
-      - name: Print Step variable
-        run: echo $MY_STEP_VARIABLE
-
