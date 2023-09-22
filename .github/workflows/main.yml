@@ -16,12 +16,7 @@
         uses: actions/checkout@v3
         env:
           MY_STEP_VARIABLE: "This is a step-level variable"
-      - name: Print Workflow variable
-        run: echo $MY_WORKFLOW_VARIABLE
-      - name: Print Job variable
-        run: echo $MY_JOB_VARIABLE
-      - name: Print Step variable
-        run: echo $MY_STEP_VARIABLE
+      
       - name: Build
         id: build
         uses: cloudposse/github-action-docker-build-push@1.13.1
@@ -36,3 +31,14 @@
       outputs:
         image: ${{ steps.build.outputs.image }}
         tag: ${{ steps.build.outputs.tag }}
+    deploy:
+      runs-on: ubuntu-latest
+  
+      steps:
+      - name: Print Workflow variable
+        run: echo $MY_WORKFLOW_VARIABLE
+      - name: Print Job variable
+        run: echo $MY_JOB_VARIABLE
+      - name: Print Step variable
+        run: echo $MY_STEP_VARIABLE
+
