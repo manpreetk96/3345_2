@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v3
         env:
           MY_STEP_VARIABLE: "This is a step-level variable"
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Print Workflow variable
         run: echo $MY_WORKFLOW_VARIABLE
       - name: Print Job variable
