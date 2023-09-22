@@ -1,12 +1,12 @@
 name: Push into main branch
-  on:
+on:
     push:
       branches: [ main ]
 
-  env:
+env:
     MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"      
    
-  jobs:
+jobs:
     context:
       runs-on: ubuntu-latest
       env:
