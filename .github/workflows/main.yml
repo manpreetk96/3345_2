@@ -18,10 +18,10 @@
           MY_STEP_VARIABLE: "This is a step-level variable"
       - name: Print Workflow variable
         run: echo $MY_WORKFLOW_VARIABLE
-      - name: Print Step variable
-        run: echo $MY_STEP_VARIABLE
       - name: Print Job variable
         run: echo $MY_JOB_VARIABLE
+      - name: Print Step variable
+        run: echo $MY_STEP_VARIABLE
       - name: Build
         id: build
         uses: cloudposse/github-action-docker-build-push@1.13.1
