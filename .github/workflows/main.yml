@@ -20,8 +20,10 @@ jobs:
         run: echo $MY_WORKFLOW_VARIABLE
       - name: Print Job variable
         run: echo $MY_JOB_VARIABLE
-      - name: Print Step variable
-        run: echo $MY_STEP_VARIABLE
+      - name: Set Step variable
+        run:
+          MY_STEP_VARIABLE="This is a step-level variable"
+          echo "::set-env name=MY_STEP_VARIABLE::$MY_STEP_VARIABLE"
       - name: Print Step variable
         run: echo $MY_STEP_VARIABLE
       - name: Build
