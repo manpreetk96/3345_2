@@ -21,7 +21,7 @@ jobs:
       - name: Print Job variable
         run: echo $MY_JOB_VARIABLE
       - name: Set Step variable
-        run:
+        run: |
           MY_STEP_VARIABLE="This is a step-level variable"
           echo "::set-env name=MY_STEP_VARIABLE::$MY_STEP_VARIABLE"
       - name: Print Step variable
