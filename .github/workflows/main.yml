@@ -12,17 +12,18 @@ jobs:
       env:
         MY_JOB_VARIABLE: "This is a job-level variable"
       steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        env:
+          MY_STEP_VARIABLE: "This is a step-level variable"
       - name: Print Workflow variable
         run: echo $MY_WORKFLOW_VARIABLE
       - name: Print Job variable
         run: echo $MY_JOB_VARIABLE
       - name: Print Step variable
         run: echo $MY_STEP_VARIABLE
-      - name: Checkout
-        uses: actions/checkout@v3
-        env:
-          MY_STEP_VARIABLE: "This is a step-level variable"
-          run: echo $MY_STEP_VARIABLE
+      - name: Print Step variable
+        run: echo $MY_STEP_VARIABLE
       - name: Build
         id: build
         uses: cloudposse/github-action-docker-build-push@1.13.1
